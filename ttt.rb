@@ -1,24 +1,21 @@
 #TicTacToe Functions
 
-def tttup(player1, choice)
+# Player 1 Moves
+def tttup1(board, player1, choice)
 
-	board = ["1", "x", "3", "4", "5", "6", "7", "8", "9"] 
+	board[choice - 1] = player1 
+	board
 
 end
 
-def tttup2(player2, choice)
-	board = ["1","2","3","4","5","6","7","8","9"]  
+# Player 2 Moves
+def tttup2(board, player2, choice)
+	 
     board[choice - 1] = player2
-
     board
 end  
 
-def tttup3(board,player1,choice)  
-    board[choice - 1] = player1
-
-    board
-end
-
+# Players being X or O
 def playerxo(player)
 	
     if player == "x"
@@ -27,6 +24,26 @@ def playerxo(player)
     	"x"
     end
     
+end
+
+def fullboard(board)
+	arya = []
+	count = 0
+	
+	board.each do |x|
+	arya << board.include?(count + 1)
+	end
+	arya.include?(true)	
+end
+
+def open_spot?(board, choice)
+	x = choice.to_i
+	if board[x - 1] == choice
+		true
+	else
+		false
+	end
+
 end
 
 
