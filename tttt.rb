@@ -48,10 +48,16 @@ class Test_toe < Minitest::Test
 		assert_equal("x", playerxo(player))
 	end
 
-	def test_fullboard()
-		board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-		assert_equal(true, fullboard(board))
+	def test_fullboard_false()
+		board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+		assert_equal(false, fullboard?(board))
 	end
+
+	def test_fullboard_true()
+		board = ["x", "x", "x", "o", "o", "o", "x", "x", "x"]
+		assert_equal(true, fullboard?(board))
+	end
+
 
 	def test_open_spot
 		board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -70,8 +76,13 @@ class Test_toe < Minitest::Test
 		choice = "4"
 		assert_equal(true, open_spot?(board, choice))
 	end
-	
 
+	def test_wins()
+		board = ["x", "x", "x", "4", "5", "6", "7", "8", "9"]
+		player1 = "x"
+		player2 = "o"
+		assert_equal(true, wins(board, player1, player2))
+	end
 
 
 
