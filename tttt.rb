@@ -27,7 +27,15 @@ class Test_toe < Minitest::Test
 	end 
 
 
+	def test_player1_x()
+		player = "x"
+		assert_equal("o", playerxo(player))
+	end
 
+	def test_player2_o()
+		player = "o"
+		assert_equal("x", playerxo(player))
+	end
 
 
 

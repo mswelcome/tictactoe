@@ -19,4 +19,17 @@ def tttup3(board,player1,choice)
     board
 end
 
+def playerxo(player)
+	
+    if player == "x"
+    	"o"
+    else
+    	"x"
+    end
+    
+end
+
+
+
+
 
