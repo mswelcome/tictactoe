@@ -45,47 +45,60 @@ def open_spot?(board, choice)
 end
 
 def wins(board, player1, player2)
-	winnums = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
+	aryax = []
 
 	
-	if board[0] && board[1] && board[2] == "x"
+	if board[0] == "x" && board[1] == "x" && board[2] == "x"
 		true
-	elsif board[3] && board[4] && board[5] == "x"
+	elsif board[3] == "x" && board[4] == "x" && board[5] == "x"
+	 	true
+	elsif board[6] == "x" && board[7] == "x" && board[8] == "x"
+	 	true
+	elsif board[0] == "x" && board[3] == "x" && board[6] == "x"
+	 	true
+	elsif board[1] == "x" && board[4] == "x" && board[7] == "x"
+	 	true
+	elsif board[2] == "x" && board[5] == "x" && board[8] == "x"
+	 	true
+	elsif board[0] == "x" && board[4] == "x" && board[8] == "x"
+	 	true
+	elsif board[2] == "x" && board[4] == "x" && board[6] == "x"
+	 	true
+	elsif board[0] == "o" && board[1] == "o"  && board[2] == "o"
+	 	true
+	elsif board[3] == "o" && board[4] == "o" && board[5] == "o"
 		true
-	elsif board[6] && board[7] && board[8] == "x"
+	elsif board[6] == "o" && board[7] == "o" && board[8] == "o"
 		true
-	elsif board[0] && board[3] && board[6] == "x"
+	elsif board[0] == "o" && board[3] == "o" && board[6] == "o"
 		true
-	elsif board[1] && board[4] && board[7] == "x"
+	elsif board[1] == "o" && board[4] == "o" && board[7] == "o"
 		true
-	elsif board[2] && board[5] && board[8] == "x"
+	elsif board[2] == "o" && board[5] == "o" && board[8] == "o"
 		true
-	elsif board[0] && board[4] && board[8] == "x"
+	elsif board[0] == "o" && board[4] == "o" && board[8] == "o"
 		true
-	elsif board[2] && board[4] && board[6] == "x"
-		true
-	elsif board[0] && board[1] && board[2] == "o"
-		true
-	elsif board[3] && board[4] && board[5] == "o"
-		true
-	elsif board[6] && board[7] && board[8] == "o"
-		true
-	elsif board[0] && board[3] && board[6] == "o"
-		true
-	elsif board[1] && board[4] && board[7] == "o"
-		true
-	elsif board[2] && board[5] && board[8] == "o"
-		true
-	elsif board[0] && board[4] && board[8] == "o"
-		true
-	elsif board[2] && board[4] && board[6] == "o"
+	elsif board[2] == "o" && board[4] == "o" && board[6] == "o"
 		true			
 	else
 		false
 	end
 end
 
-# if board[grrr[0]] == "x" && board[grrr[1]] == "x" board[grrr[2]] == "x"
-# 			true
-# 		end
+def winner(board)
+	winnums = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
+	board = ["x", "x", "x", 3, 4, 5, 6, 7, 8]
+	aryax = []
+	aryao = []
+	count = 0
 
+	while count < 9 
+		if board[count] == x
+			aryax << count
+		count += 1
+		end
+	end
+
+	aryax.eql?(winnums)
+
+end

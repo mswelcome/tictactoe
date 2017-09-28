@@ -84,10 +84,26 @@ class Test_toe < Minitest::Test
 		assert_equal(true, wins(board, player1, player2))
 	end
 
+	def test_wins2()
+		board = ["x", "2", "x", "4", "x", "6", "7", "8", "9"]
+		player1 = "x"
+		player2 = "o"
+		assert_equal(true, wins(board, player1, player2))
+	end
 
+	def test_wins3()
+		board = ["1", "2", "3", "o", "o", "o", "7", "8", "9"]
+		player1 = "x"
+		player2 = "o"
+		assert_equal(true, wins(board, player1, player2))
+	end
 
-
-
+	def test_wins4()
+		board = ["x", "o", "x", "4", "5", "6", "7", "8", "9"]
+		player1 = "x"
+		player2 = "o"
+		assert_equal(false, wins(board, player1, player2))
+	end
 
 
 
