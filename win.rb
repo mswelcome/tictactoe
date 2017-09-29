@@ -2,7 +2,7 @@
 
 def winner()
 	winnums = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
-	board = ["x", "x", 3, "o", "o", "o", "7", 8, 9]
+	board = ["x", "x", "x", 4, "o", "o", 7, 8, 9]
 	aryax = []
 	aryao = []
 	count = 0
@@ -17,11 +17,17 @@ def winner()
 		count += 1
 	end
 
-	winnums.any? do |arya|
-		puts aryax.eql?(arya)
-		puts aryao.eql?(arya)
+	while count < 9
+		puts aryax.include?(winnums[count])
+		count +=1
 	end
 
+	# winnums.each do |arya|
+	# 	puts aryax
+	# 	puts arya
+	# 	puts aryax.include?(arya)
+	# 	aryao.eql?(arya)
+	# end
 end
 
 winner
