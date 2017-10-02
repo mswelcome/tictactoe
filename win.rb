@@ -17,17 +17,18 @@ def winner()
 		count += 1
 	end
 
-	while count < 9
-		puts aryax.include?(winnums[count])
-		count +=1
+	# while count < 9
+	# 	puts aryax.include?(winnums[count])
+	# 	count +=1
+	# end
+
+	winnums.each do |arya|
+		# 	puts aryax
+	# 	puts arya
+		puts aryax.include?(arya)
+	# 	aryao.eql?(arya)
 	end
 
-	# winnums.each do |arya|
-	# 	puts aryax
-	# 	puts arya
-	# 	puts aryax.include?(arya)
-	# 	aryao.eql?(arya)
-	# end
 end
 
 winner

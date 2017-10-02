@@ -1,5 +1,5 @@
 require "minitest/autorun"
-require_relative "ttt"
+require_relative "ttt.rb"
 
 class Test_toe < Minitest::Test
 
@@ -21,7 +21,7 @@ class Test_toe < Minitest::Test
     	player2 = "o"
     	choice = 4
     	assert_equal(["1","x","3","o","5","6","7","8","9"], tttup2(board,player2,choice))
-	end 
+	end
 
 	def test_player1move2()
     	board = ["1","x","3","o","5","6","7","8","9"]
@@ -35,7 +35,7 @@ class Test_toe < Minitest::Test
     	player2 = "o"
     	choice = 5
     	assert_equal(["1","x","3","o","o","6","7","x","9"], tttup2(board,player2,choice))
-	end 
+	end
 
 
 	def test_player1_x()
