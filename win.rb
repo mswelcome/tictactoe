@@ -25,7 +25,7 @@ def winner()
 	winnums.each do |arya|
 		# 	puts aryax
 	# 	puts arya
-		puts aryax.include?(arya)
+	aryax.include?(arya)
 	# 	aryao.eql?(arya)
 	end
 
