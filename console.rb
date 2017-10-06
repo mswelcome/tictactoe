@@ -14,8 +14,9 @@ require_relative 'human.rb'
           @player1 = Human.new("x")
           @player2 = Seqmove.new("o")
           @cp = player1
+      end
 
-     def printboard
+     def printboard()
           p "#{board.ttt_board[0]} || #{board.ttt_board[1]} || #{board.ttt_board[2]}"
           p "= || = || ="
           p "#{board.ttt_board[3]} || #{board.ttt_board[4]} || #{board.ttt_board[5]}"
@@ -24,7 +25,7 @@ require_relative 'human.rb'
           p "Place your marker, pick 1 thru 9."
      end
 
-     def valid_spot
+     def valid_spot(choice)
           if board.open_spot?(board.ttt_board, choice) == true
                board.tttup(@player, choice)
           else
@@ -35,28 +36,39 @@ require_relative 'human.rb'
 
      def select
           if current_player == player1
-               @current_player = player2
+               @cp = player2
           else current_player == player2
-               @current_player = player1
+               @cp = player1
+          end
      end
 
-     # def playgame
-     #
+     #  def playgame()
      #      game = "run"
-     #
+     #      choice = ""
+      #
+     #      printboard
      #      until game == "done" do
-     #
-     #
-     #      choice = gets.chomp.to_i
-     #
+     #           if cp.marker == "x"
+     #                choice = gets.chomp.to_i
+     #           else
+     #                choice = player2.seq_move(board.ttt_board)
+     #           end
+      #
+     #           valid_spot()
+      #
      #           if board.wins(@ttt_board) == true
      #                p "Player #{@player} is the wins!"
      #                game = "done"
+     #                printboard
+     #           elsif board.fullboard?(board.ttt_board) == true
+     #                select()
+     #           else
+     #                p "TIE!!!"
+     #                game = "done"
      #           end
-     #           if board.fullboard?(board.ttt_board) == true
-     #                p "Tie game!"
-     #           end
+     #      end
 
 
 
 end
+#playgame()

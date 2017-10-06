@@ -17,6 +17,16 @@ class Board
 
 	end
 
+	# def printboard()
+     #      p "#{board.ttt_board[0]} || #{board.ttt_board[1]} || #{board.ttt_board[2]}"
+     #      p "= || = || ="
+     #      p "#{board.ttt_board[3]} || #{board.ttt_board[4]} || #{board.ttt_board[5]}"
+     #      p "= || = || ="
+     #      p "#{board.ttt_board[6]} || #{board.ttt_board[7]} || #{board.ttt_board[8]}"
+     #      p "Place your marker, pick 1 thru 9."
+     # end
+
+
 	def fullboard?(board)
 		if board.include?(1) || board.include?(2) || board.include?(3) || board.include?(4) || board.include?(5) || board.include?(6) || board.include?(7) || board.include?(8) || board.include?(9)
         		false
