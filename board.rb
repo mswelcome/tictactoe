@@ -2,17 +2,16 @@
 
 class Board
 
-	attr_accessor :ttt_board
+	attr_accessor :ttt_board, :marker
 
 	def initialize
-
-		@ttt_board = [1,2,3,4,5,6,7,8,9]
-
+		@marker = marker
+		@ttt_board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 	end
 
-	def tttup(marker, choice)
-
-		@ttt_board[choice - 1] = marker
+	def tttup(ttt_board, choice, marker)
+		choice = choice.to_i
+	 	@ttt_board[choice - 1] = marker
 		@ttt_board
 
 	end
@@ -27,20 +26,20 @@ class Board
      # end
 
 
-	def fullboard?(board)
-		if board.include?(1) || board.include?(2) || board.include?(3) || board.include?(4) || board.include?(5) || board.include?(6) || board.include?(7) || board.include?(8) || board.include?(9)
+	def fullboard?(ttt_board)
+		if ttt_board.include?("1") || ttt_board.include?("2") || ttt_board.include?("3") || ttt_board.include?("4") || ttt_board.include?("5") || ttt_board.include?("6") || ttt_board.include?("7") || ttt_board.include?("8") || ttt_board.include?("9")
         		false
     		else
         		true
     		end
 	end
 
-  	def open_spot?(board, choice)
+  	def open_spot?(ttt_board, choice, marker)
 		x = choice.to_i
-		if board[x - 1] == choice
-			true
-		else
+		if ttt_board[x - 1] == marker
 			false
+		else
+			true
 		end
 	end
 

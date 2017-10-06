@@ -26,18 +26,18 @@ require_relative 'human.rb'
      end
 
      def valid_spot(choice)
-          if board.open_spot?(board.ttt_board, choice) == true
-               board.tttup(@player, choice)
+          if board.open_spot?(board.ttt_board, choice, cp.marker) == true
+               board.tttup(ttt_board, choice, cp.marker)
           else
-               board.open_spot?(board.ttt_board, choice) == false
+               board.open_spot?(board.ttt_board, choice, cp.marker) == false
                p "Invalid choice, try again."
           end
      end
 
      def select
-          if current_player == player1
+          if cp == player1
                @cp = player2
-          else current_player == player2
+          else cp == player2
                @cp = player1
           end
      end
