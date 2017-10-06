@@ -10,11 +10,11 @@ class Seqmove
 
     def seq_move(ttt_board)
     move = ""
-    choice = [0,1,2,3,4,5,6,7,8]
+    choice = ["1","2","3","4","5","6","7","8","9"]
     count = 0
 
           until move == "taken"
-               if ttt_board[choice[count]] == "x" || ttt_board[choice[count]] == "o"
+               if ttt_board[count] == "x" || ttt_board[count] == "o"
                     count += 1
                else
                     move = "taken"

@@ -34,9 +34,11 @@ class Board
     		end
 	end
 
-  	def open_spot?(ttt_board, choice, marker)
+  	def open_spot?(ttt_board, choice)
 		x = choice.to_i
-		if ttt_board[x - 1] == marker
+		if ttt_board[x - 1] == "x"
+			false
+		elsif ttt_board[x - 1] == "o"
 			false
 		else
 			true

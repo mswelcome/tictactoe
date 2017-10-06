@@ -19,16 +19,21 @@ until game == "done" do
         choice = console.player2.seq_move(console.board.ttt_board)
       end
 
-     console.valid_spot(choice)
-     #console.board.tttup(console.cp.marker, console.board.ttt_board)
-     if console.board.wins(console.board.ttt_board)
-          p "#{console.cp.marker} WINS!!!"
-          game = "done"
-          console.printboard
-     elsif console.board.fullboard?(console.board.ttt_board) == false
-          console.select()
+     if console.board.open_spot?(console.board.ttt_board, choice) == true
+          console.board.tttup(console.ttt_board, choice, console.cp.marker)
+          if console.board.wins(console.board.ttt_board)
+               p "#{console.cp.marker} WINS!!!"
+               game = "done"
+               console.printboard
+          elsif console.board.fullboard?(console.board.ttt_board) == false
+               console.select()
+          else
+               p "TIE!!!"
+               console.printboard
+               game = "done"
+          end
      else
-          p "TIE!!!"
-          game = "done"
+          console.board.open_spot?(console.board.ttt_board, choice) == false
+          p "Invalid choice, try again."
      end
 end

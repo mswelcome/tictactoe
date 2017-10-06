@@ -26,11 +26,12 @@ require_relative 'human.rb'
      end
 
      def valid_spot(choice)
-          if board.open_spot?(board.ttt_board, choice, cp.marker) == true
+          if board.open_spot?(board.ttt_board, choice) == true
                board.tttup(ttt_board, choice, cp.marker)
           else
-               board.open_spot?(board.ttt_board, choice, cp.marker) == false
+               board.open_spot?(board.ttt_board, choice) == false
                p "Invalid choice, try again."
+
           end
      end
 
@@ -42,33 +43,4 @@ require_relative 'human.rb'
           end
      end
 
-     #  def playgame()
-     #      game = "run"
-     #      choice = ""
-      #
-     #      printboard
-     #      until game == "done" do
-     #           if cp.marker == "x"
-     #                choice = gets.chomp.to_i
-     #           else
-     #                choice = player2.seq_move(board.ttt_board)
-     #           end
-      #
-     #           valid_spot()
-      #
-     #           if board.wins(@ttt_board) == true
-     #                p "Player #{@player} is the wins!"
-     #                game = "done"
-     #                printboard
-     #           elsif board.fullboard?(board.ttt_board) == true
-     #                select()
-     #           else
-     #                p "TIE!!!"
-     #                game = "done"
-     #           end
-     #      end
-
-
-
 end
-#playgame()
