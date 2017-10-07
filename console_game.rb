@@ -14,9 +14,9 @@ until game == "done" do
      choice = ""
 
       if console.cp.marker == "x"
-        choice = gets.chomp.to_i
+        choice = console.player1.getmove
       else
-        choice = console.player2.seq_move(console.board.ttt_board)
+        choice = console.player2.move #(console.board.ttt_board)
       end
 
      if console.board.open_spot?(console.board.ttt_board, choice) == true

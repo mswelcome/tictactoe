@@ -8,8 +8,8 @@ class Human
           @marker = marker
      end
 
-     def gethmove
-          hmove = gets.chomp.to_i
+     def getmove
+          move = gets.chomp.to_i
      end
-     
+
 end

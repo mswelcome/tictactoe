@@ -8,7 +8,7 @@ class Seqmove
           @marker = marker
      end
 
-    def seq_move(ttt_board)
+    def getmove(ttt_board)
     move = ""
     choice = ["1","2","3","4","5","6","7","8","9"]
     count = 0
@@ -22,5 +22,14 @@ class Seqmove
          end
 
         choice[count]
+    end
+
+    def move
+         move = ["1","2","3","4","5","6","7","8","9"]
+         choice = ""
+         move.each do |i|
+              choice = i
+         end
+         choice.to_i
     end
 end
