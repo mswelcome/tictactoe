@@ -5,15 +5,15 @@ require_relative "win.rb"
 
 class Test_win < Minitest::Test
 
-  def test_wins1()
-		board = ["x", "x", "x", "4", "5", "x", "7", "8", "9"]
-		player1 = "x"
-		player2 = "o"
-		assert_equal(true, winner(board))
-	end
+     def test_wins1()
+          board = ["x", "x", "x", "4", "5", "x", "7", "8", "9"]
+          player1 = "x"
+          player2 = "o"
+          assert_equal(true, winner(board))
+     end
 
      def test_wins2()
-          board = ["x", "x",3,4,5,6,"x",8,9]
+          board = ["x", "x","3","4","5","6","x","8","9"]
           assert_equal(false, winner(board))
      end
 

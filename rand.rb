@@ -13,10 +13,10 @@ class Random
 	#      board[choice] == choice
      # end
 
-     def getmove
+     def getmove(move,choice)
           move = ["1","2","3","4","5","6","7","8","9"]
-          choice = move.sample
-          choice.to_i
+          choice = move.sample.to_i
+
           # move = rand(1..9).
           # if valid_space?(ttt_board, random_move) == false
 		#      getmove(board)
@@ -26,7 +26,7 @@ class Random
 	end
 
 
-     # def randmoves(board, choice)
+     # def randmoves(ttt_board)
      #      choice = ["1","2","3","4","5","6","7","8","9"]
      #      count = 0
      #      move = ""
@@ -37,13 +37,9 @@ class Random
      #                move == "taken"
      #           end
      #      end
-     #      puts rand_move
+     #      rand_move
      #      rm = rand_move - 1
-     #      puts rm
+     #      rm
      # end
-
-
-
-
 
 end
