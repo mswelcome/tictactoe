@@ -9,8 +9,14 @@ class Unai
           xcorner = [0,2,6,8]
           xedge = [1,3,5,7]
           choice = 0
-          choice = 4 if xcorner.any? {|a| ttt_board[a] == "x"}
-          # choice = xcorner.sample if ttt_board[4] == "x"
+          if xcorner.any? {|a| ttt_board[a] == "x"}
+               choice = 4
+
+          elsif ttt_board[4] == "x"
+               choice = 1
+          else xedge.any? {|a| ttt_board[a] == "x"}
+               choice = 9
+          end
      end
 
 
