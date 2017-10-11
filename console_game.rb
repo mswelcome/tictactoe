@@ -21,7 +21,7 @@ until game == "done" do
 
      if console.board.open_spot?(console.board.ttt_board, choice) == true
           console.board.tttup(console.ttt_board, choice, console.cp.marker)
-          if console.board.wins(console.board.ttt_board)
+          if console.board.winnner(console.board.ttt_board)
                p "#{console.cp.marker} WINS!!!"
                game = "done"
                console.printboard

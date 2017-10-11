@@ -45,12 +45,12 @@ class Board
 		end
 	end
 
-	def winner(board)
+	def winner(ttt_board)
 		winnums = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
 
 		winnums.any? do |arya|
-			return true if arya.all? {|a| board[a] == "x"}
-			return true if arya.all? {|a| board[a] == "o"}
+			return true if arya.all? {|a| ttt_board[a] == "x"}
+			return true if arya.all? {|a| ttt_board[a] == "o"}
 		end
 
 	end
