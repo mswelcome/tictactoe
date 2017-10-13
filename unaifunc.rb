@@ -50,7 +50,22 @@ class Unai
 
      def smove(ttt_board)
           os = []
-          
+          aryax = []
+          aryao = []
+
+          ttt_board.each_with_index do |arya, i|
+               if arya == "x"
+                    aryax << i
+               elsif arya == "o"
+                    aryao << i
+               else arya == ""
+                    os << i
+               end
+          end
+
+                    
+
+     end
 
      def getmove(ttt_board,player1,marker)
           if ttt_board.count(player1) <= 1
