@@ -34,43 +34,58 @@ class Unai
      end
 
 
-     def fmove(ttt_board, player1)
+     def fmove(ttt_board)
           corner = [0,2,6,8]
           edge = [1,3,5,7]
           choice = 0
-          p "#{player1} QWERTY"
-          if corner.any? {|a| ttt_board[a] == player1}
+
+          if corner.any? {|a| ttt_board[a] == "x"}
                choice = 5
-          elsif ttt_board[4] == player1
+          elsif ttt_board[4] == "x"
                choice = 1
-          else edge.any? {|a| ttt_board[a] == player1}
+          else edge.any? {|a| ttt_board[a] == "x"}
                choice = 9
           end
      end
 
-     def smove(ttt_board)
-          os = []
-          aryax = []
-          aryao = []
+     def get_edge_if_perfect(ttt_board,player1,marker)
 
-          ttt_board.each_with_index do |arya, i|
-               if arya == "x"
-                    aryax << i
-               elsif arya == "o"
-                    aryao << i
-               else arya == ""
-                    os << i
+          state_diag =  [
+          [ttt_board[0], ttt_board[4], ttt_board[8]],
+          [ttt_board[2], ttt_board[4], ttt_board[6]]
+          ]
+
+          choice = 10
+
+          state_diag.each_with_index do |arya, index|
+               if arya.count(marker) == 1 && arya.count(player1) == 2
+                    if
+                         ttt_board[1] == ''
+                         choice = 2
+
+                    elsif
+                         ttt_board[3] == ''
+                         choice = 4
+
+                    elsif
+                         ttt_board[5] == ''
+                         move = 6
+
+                    else
+                         ttt_board[7] == ''
+                         move = 8
+                    end
                end
-          end
-
-                    
-
+         end
+          choice
      end
 
      def getmove(ttt_board,player1,marker)
           if ttt_board.count(player1) <= 1
-               fmove(ttt_board,player1)
-          else win(ttt_board,player1,marker)
+               fmove(ttt_board)
+          elsif win(ttt_board,marker) <= 9
+          else get_edge_if_perfect(ttt_board,player1,marker) <= 9
+
           end
      end
      # def smove(ttt_board)

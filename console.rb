@@ -6,6 +6,8 @@ require_relative 'board.rb'
 require_relative 'seqmove.rb'
 require_relative 'human.rb'
 require_relative 'unaifunc.rb'
+require_relative 'console.rb'
+
 
      attr_accessor :ttt_board, :player1, :board, :player2, :cp, :showboard
 
