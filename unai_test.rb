@@ -23,21 +23,21 @@ class Test_unai < Minitest::Test
           unai = Unai.new
           ttt_board = ["x","2","3","4","5","6","7","8","9"]
           player1 = "x"
-          assert_equal(4, unai.fmove(ttt_board,player1))
+          assert_equal(5, unai.fmove(ttt_board))
      end
 
      def test_fmove_xcenter()
           unai = Unai.new
           ttt_board = ["1","2","3","4","x","6","7","8","9"]
           player1 = "x"
-          assert_equal(1, unai.fmove(ttt_board,player1))
+          assert_equal(1, unai.fmove(ttt_board))
      end
 
      def test_fmove_xedge()
           unai = Unai.new
           ttt_board = ["1","x","3","4","5","6","7","8","9"]
           player1 = "x"
-          assert_equal(9, unai.fmove(ttt_board,player1))
+          assert_equal(9, unai.fmove(ttt_board))
      end
 
      def test_getmove()
@@ -45,9 +45,16 @@ class Test_unai < Minitest::Test
           ttt_board = ["x","","","","","","","",""]
           player1 = "x"
           marker = "o"
-          assert_equal(4, unai.getmove(ttt_board,marker,player1))
+          assert_equal(5, unai.getmove(ttt_board,marker,player1))
      end
 
+     def test_get_edge_if_perfect_1()
+          unai = Unai.new
+          ttt_board = ["x","","","","o","","","","x"]
+          player1 = "x"
+          marker = "o"
+          assert_equal(2, unai.get_edge_if_perfect(ttt_board,player1,marker))
+     end
      #
      # def test_smove_xoppc1()
      #      ttt_board = ["x","2","3","4","o","6","7","8","x"]

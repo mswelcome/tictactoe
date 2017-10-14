@@ -5,11 +5,11 @@ require_relative 'human.rb'
 
 class Unai
 
-     attr_accessor :marker
+     # attr_accessor :marker
 
-     def initialize(marker)
-          @marker = marker
-     end
+     # def initialize(marker)
+     #      @marker = marker
+     # end
 
      def win(ttt_board, marker)
           state = [
@@ -69,11 +69,11 @@ class Unai
 
                     elsif
                          ttt_board[5] == ''
-                         move = 6
+                         choice = 6
 
                     else
                          ttt_board[7] == ''
-                         move = 8
+                         choice = 8
                     end
                end
          end
