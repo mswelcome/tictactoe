@@ -24,12 +24,13 @@ class Board
     		end
 	end
 
-  	def open_spot?(ttt_board, choice)
+  	def open_spot?(ttt_board,marker,choice)
 		qwerty = choice.to_i
-		if ttt_board[qwerty - 1] == "x"
+		p "#{qwerty} BLAH"
+		if ttt_board[qwerty - 1] == marker
 			false
-		elsif ttt_board[qwerty - 1] == "o"
-			false
+		#elsif ttt_board[qwerty - 1] == "o"
+		#	false
 		else
 			true
 		end

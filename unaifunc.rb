@@ -6,12 +6,12 @@ require_relative 'human.rb'
 class Unai
 
      # attr_accessor :marker
-
+     #
      # def initialize(marker)
      #      @marker = marker
      # end
 
-     def win(ttt_board, marker)
+     def win(ttt_board,marker)
           state = [
                [ttt_board[0],ttt_board[1],ttt_board[2]],
                [ttt_board[3],ttt_board[4],ttt_board[5]],
@@ -44,11 +44,11 @@ class Unai
           elsif ttt_board[4] == "x"
                choice = 1
           else edge.any? {|a| ttt_board[a] == "x"}
-               choice = 9
+               choice = 5
           end
      end
 
-     def get_edge_if_perfect(ttt_board,player1,marker)
+     def get_edge_if_perfect(ttt_board)
 
           state_diag =  [
           [ttt_board[0], ttt_board[4], ttt_board[8]],
@@ -58,7 +58,7 @@ class Unai
           choice = 10
 
           state_diag.each_with_index do |arya, index|
-               if arya.count(marker) == 1 && arya.count(player1) == 2
+               if arya.count("o") == 1 && arya.count("x") == 2
                     if
                          ttt_board[1] == ''
                          choice = 2
@@ -80,14 +80,49 @@ class Unai
           choice
      end
 
+     def if_edge_p1_2nd_move(ttt_board)
+
+          one_eight = [0,7]
+          one_six = [0,5]
+          three_eight = [2,7]
+          three_four = [3,4]
+          seven_two = [1,6]
+          seven_six = [5,6]
+          nine_two = [1,8]
+          nine_four = [3,8]
+          choice = 10
+
+          if one_eight.all? {|a| ttt_board[a] == "x"}
+               choice = 6
+          elsif one_six.all? {|a| ttt_board[a] == "x"}
+               choice = 3
+          elsif three_eight.all? {|a| ttt_board[a] == "x"}
+               choice = 9
+          elsif three_four.all? {|a| ttt_board[a] == "x"}
+               choice = 1
+          elsif seven_two.all? {|a| ttt_board[a] == "x"}
+               choice = 1
+          elsif seven_six.all? {|a| ttt_board[a] == "x"}
+               choice = 3
+          elsif nine_two.all? {|a| ttt_board[a] == "x"}
+               choice = 1
+          else  nine_four.all? {|a| ttt_board[a] == "x"}
+               choice = 1
+          end
+     end
+
+
+
      def getmove(ttt_board,player1,marker)
           if ttt_board.count(player1) <= 1
                fmove(ttt_board)
           elsif win(ttt_board,marker) <= 9
-          else get_edge_if_perfect(ttt_board,player1,marker) <= 9
-
+          elsif get_edge_if_perfect(ttt_board) <= 9
+          else if_edge_p1_2nd_move <= 9     
           end
      end
+
+
      # def smove(ttt_board)
      #      xoppc1 = [0,8]
      #      xoppc2 = [2,6]
