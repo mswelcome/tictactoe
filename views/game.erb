@@ -1,0 +1,17 @@
+<html>
+<body>
+<%showboard = ["1","2","3","4","5","6","7","8","9"]%>
+
+<p> <%=showboard[0]%> || <%=showboard[1]%> || <%=showboard[2]%> <br>
+   = || = || = <br>
+   <%=showboard[3]%> || <%=showboard[4]%> || <%=showboard[5]%> <br>
+   = || = || = <br>
+   <%=showboard[6]%> || <%=showboard[7]%> || <%=showboard[8]%> <br>
+   Place your marker, pick 1 thru 9. </p>
+
+
+<%=printboard%>
+
+<form method="post" action="loop">
+  <input type="submit" name="choice">
+</form>
