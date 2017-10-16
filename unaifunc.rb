@@ -9,6 +9,7 @@ class Unai
      end
 
      def win(ttt_board,marker)
+          p "WIN"
           state = [
                [ttt_board[0],ttt_board[1],ttt_board[2]],
                [ttt_board[3],ttt_board[4],ttt_board[5]],
@@ -22,13 +23,43 @@ class Unai
           winnums = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
           choice = 10
           state.each_with_index do |arya, index|
-               if arya.count(marker) == 2 && arya.count("") == 1
+                #p "#{arya} QWERTY"
+                if arya.count(marker) == 2 && arya.count("") == 1
                     win = arya.index("")
                     choice = winnums[index][win]
                end
           end
-          choice
+
+          p "#{choice} WIN"
+          choice + 1
      end
+
+     def block(ttt_board)
+          p "BLOCK"
+          state = [
+               [ttt_board[0],ttt_board[1],ttt_board[2]],
+               [ttt_board[3],ttt_board[4],ttt_board[5]],
+               [ttt_board[6],ttt_board[7],ttt_board[8]],
+               [ttt_board[0],ttt_board[3],ttt_board[6]],
+               [ttt_board[1],ttt_board[4],ttt_board[7]],
+               [ttt_board[2],ttt_board[5],ttt_board[8]],
+               [ttt_board[0],ttt_board[4],ttt_board[8]],
+               [ttt_board[2],ttt_board[4],ttt_board[6]]
+          ]
+          winnums = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
+          choice = 10
+          state.each_with_index do |arya, index|
+                #p "#{arya} QWERTY"
+                if arya.count("x") == 2 && arya.count("") == 1
+                    win = arya.index("")
+                    choice = winnums[index][win]
+               end
+          end
+
+          p "#{choice} BLOCK"
+          choice + 1
+     end
+
 
 
      def fmove(ttt_board)
@@ -54,6 +85,8 @@ class Unai
 
           choice = 10
 
+          p "Blah "
+
           state_diag.each_with_index do |arya, index|
                if arya.count("o") == 1 && arya.count("x") == 2
                     if
@@ -74,6 +107,7 @@ class Unai
                     end
                end
          end
+         p "#{choice} CHOICE"
           choice
      end
 
@@ -88,6 +122,8 @@ class Unai
           nine_two = [1,8]
           nine_four = [3,8]
           choice = 10
+
+          p "qwerty"
 
           if one_eight.all? {|a| ttt_board[a] == "x"}
                choice = 6
@@ -111,12 +147,19 @@ class Unai
 
 
      def getmove(ttt_board,marker,player1)
+          choice = 10
           if ttt_board.count(player1) <= 1
-               fmove(ttt_board)
+               choice = fmove(ttt_board)
           elsif win(ttt_board,marker) <= 9
-          elsif get_edge_if_perfect(ttt_board) <= 9
-          else if_edge_p1_2nd_move(ttt_board) <= 9
+              choice = win(ttt_board,marker)
+          elsif block(ttt_board) <= 9
+              choice = block(ttt_board)
+          elsif get_edge_if_perfect(ttt_board) <=9
+              choice = get_edge_if_perfect(ttt_board)
+          else if_edge_p1_2nd_move(ttt_board) <=9
+              choice = if_edge_p1_2nd_move(ttt_board)
           end
+          choice
      end
 
 

@@ -11,10 +11,10 @@ enable 'sessions'
 
 get '/' do
 
-     session[:console] = Console.new
+     console = Console.new
 
 
-     printboard = session[:console].printboard
+     #printboard = console.printboard
 
      erb :root, locals: {printboard: printboard}
 end
