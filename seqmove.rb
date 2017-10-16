@@ -8,7 +8,7 @@ class Seqmove
           @marker = marker
      end
 
-    def getmove(ttt_board)
+    def getmove(ttt_board,marker,player1)
     move = ""
     choice = ["1","2","3","4","5","6","7","8","9"]
     count = 0

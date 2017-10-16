@@ -1,15 +1,12 @@
 #Unbeatable AI Functions
 
-require_relative 'board.rb'
-require_relative 'human.rb'
-
 class Unai
 
-     # attr_accessor :marker
-     #
-     # def initialize(marker)
-     #      @marker = marker
-     # end
+     attr_accessor :marker
+
+     def initialize(marker)
+          @marker = marker
+     end
 
      def win(ttt_board,marker)
           state = [
@@ -113,12 +110,12 @@ class Unai
 
 
 
-     def getmove(ttt_board,player1,marker)
+     def getmove(ttt_board,marker,player1)
           if ttt_board.count(player1) <= 1
                fmove(ttt_board)
           elsif win(ttt_board,marker) <= 9
           elsif get_edge_if_perfect(ttt_board) <= 9
-          else if_edge_p1_2nd_move <= 9     
+          else if_edge_p1_2nd_move(ttt_board) <= 9
           end
      end
 
