@@ -36,7 +36,7 @@ post '/diff' do
 end
 
 get '/game' do
-  mssg = params[:mssg] || ""
+  msg = params[:msg] || ""
   session[:ttt_board] = session[:console].board.ttt_board
 
 
@@ -63,5 +63,5 @@ post '/loop' do
 end
 
 get '/gameresults' do
-  
+
 end
