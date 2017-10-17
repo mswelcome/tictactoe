@@ -1,17 +1,23 @@
 <html>
+<%=mssg%>
 <body>
-<%showboard = ["1","2","3","4","5","6","7","8","9"]%>
+<form method = "post" action = "loop">
 
-<p> <%=showboard[0]%> || <%=showboard[1]%> || <%=showboard[2]%> <br>
-   = || = || = <br>
-   <%=showboard[3]%> || <%=showboard[4]%> || <%=showboard[5]%> <br>
-   = || = || = <br>
-   <%=showboard[6]%> || <%=showboard[7]%> || <%=showboard[8]%> <br>
-   Place your marker, pick 1 thru 9. </p>
+<input type="submit" name="choice" value="1"><%=board[0]%> ||
+<input type="submit" name="choice" value="2"><%=board[1]%> ||
+<input type="submit" name="choice" value="3"><%=board[2]%><br>
+_________________<br>
+<input type="submit" name="choice" value="4"><%=board[3]%> ||
+<input type="submit" name="choice" value="5"><%=board[4]%> ||
+<input type="submit" name="choice" value="6"><%=board[5]%><br>
+_________________<br>
+<input type="submit" name="choice" value="7"><%=board[6]%> ||
+<input type="submit" name="choice" value="8"><%=board[7]%> ||
+<input type="submit" name="choice" value="9"><%=board[8]%><br>
 
-
-<%=printboard%>
-
-<form method="post" action="loop">
-  <input type="submit" name="choice">
 </form>
+
+</body>
+
+
+</html>

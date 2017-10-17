@@ -36,10 +36,11 @@ post '/diff' do
 end
 
 get '/game' do
+  mssg = params[:mssg] || ""
   session[:board] = session[:console].board.ttt_board
 
 
-  erb :game, locals: {board: session{:board}}
+  erb :game, locals: {board: session{:board},msg: msg}
 end
 
 post '/loop' do
