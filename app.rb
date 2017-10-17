@@ -37,15 +37,31 @@ end
 
 get '/game' do
   mssg = params[:mssg] || ""
-  session[:board] = session[:console].board.ttt_board
+  session[:ttt_board] = session[:console].board.ttt_board
 
 
-  erb :game, locals: {board: session{:board},msg: msg}
+  erb :game, locals: {ttt_board: session{:ttt_board},msg: msg}
 end
 
 post '/loop' do
   choice = params[:choice]
 
+  if session[:console].board.open_spot?(session[:ttt_board],choice) == true
+    session[:console].board.tttup(session[:ttt_board],choice,session[:console].cp.marker)
+  else redirect '/loop?msg=Invalid choice'
+  end
+  if session[:console].board.winner(session[:ttt_board]) || session[:console].board.fullboard?(session[:ttt_board])
+    redirect '/gameresults'
+  else
+    choice = session[:console].player2.getmove(session[:ttt_board],session[:console].cp.marker,session[:console].player1.marker)
+    session[:console].board.tttup(session[:ttt_board],choice,session[:console].cp.marker)
+  end
+  if session[:console].board.winner(session[:ttt_board]) || session[:console].board.fullboard?(session[:ttt_board])
+    redirect '/gameresults'
+  else redirect '/loop'
+  end
+end
 
-
+get '/gameresults' do
+  
 end
