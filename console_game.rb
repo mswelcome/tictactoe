@@ -16,7 +16,7 @@ until game == "done" do
 
      choice = console.cp.getmove(console.board.ttt_board,console.cp.marker,console.player1.marker)
 
-     p "#{choice} YOOOOOOOO"
+     #p "#{choice} YOOOOOOOO"
      #  if console.cp.marker == "x"
      #    choice = console.player1.getmove
      #  else
