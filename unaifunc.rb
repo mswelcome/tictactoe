@@ -123,7 +123,7 @@ class Unai
           nine_four = [3,8]
           choice = 10
 
-          p "EDGE"
+          #p "EDGE"
 
           if one_eight.all? {|a| ttt_board[a] == "x"}
                choice = 6
@@ -157,7 +157,7 @@ class Unai
           else nine_four.all? {|a| ttt_board[a] == "x"}
                choice = 1
           end
-          p "#{choice}"
+          #p "#{choice}"
           choice
      end
 
@@ -187,7 +187,7 @@ class Unai
               choice = get_edge_if_perfect(ttt_board)
           elsif if_edge_p1_2nd_move(ttt_board) <=9
               choice = if_edge_p1_2nd_move(ttt_board)
-         else freechoice(ttt_board) <=9
+          else freechoice(ttt_board) <=9
               choice = freechoice(ttt_board)
           end
           choice

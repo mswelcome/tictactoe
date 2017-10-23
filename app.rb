@@ -36,11 +36,14 @@ post '/diff' do
 end
 
 get '/game' do
-  msg = params[:msg] || ""
-  session[:ttt_board] = session[:console].board.ttt_board
+     choice = params[:choice]
+     msg = params[:msg] || ""
+     session[:ttt_board] = session[:console].board.ttt_board
+     xp = session[:console].player1.marker
+     op = session[:console].player2.marker
 
 
-  erb :game, locals: {ttt_board: session{:ttt_board},msg: msg}
+     erb :game, locals: {ttt_board: session{:ttt_board},msg: msg,choice: choice}
 end
 
 post '/loop' do
@@ -48,20 +51,23 @@ post '/loop' do
 
   if session[:console].board.open_spot?(session[:ttt_board],choice) == true
     session[:console].board.tttup(session[:ttt_board],choice,session[:console].cp.marker)
-  else redirect '/loop?msg=Invalid choice'
+  else redirect '/game?msg=Invalid choice' + '&choice=' + choice
   end
   if session[:console].board.winner(session[:ttt_board]) || session[:console].board.fullboard?(session[:ttt_board])
     redirect '/gameresults'
   else
-    choice = session[:console].player2.getmove(session[:ttt_board],session[:console].cp.marker,session[:console].player1.marker)
-    session[:console].board.tttup(session[:ttt_board],choice,session[:console].cp.marker)
+    choice = session[:console].cp.getmove(session[:ttt_board],session[:console].player2.marker,session[:console].player1.marker)
+    session[:console].board.tttup(session[:ttt_board],choice,session[:console].player1.marker)
   end
   if session[:console].board.winner(session[:ttt_board]) || session[:console].board.fullboard?(session[:ttt_board])
     redirect '/gameresults'
-  else redirect '/loop'
+  else redirect '/game'
   end
 end
 
 get '/gameresults' do
+
+
+
 
 end
