@@ -5,7 +5,7 @@
 
 <form id="showboard" method = "post" action = "/loop">
 
-     <input id="one" type="submit" name="choice" value="1"><%=ttt_board[0]%> ||
+     <input id="one" type="submit" name="choice" value="1" onclick="showboard(<%=ttt_board%>)"><%=ttt_board[0]%> ||
      <input id="two" type="submit" name="choice" value="2"><%=ttt_board[1]%> ||
      <input id="three" type="submit" name="choice" value="3"><%=ttt_board[2]%><br>
      _________________<br>
@@ -22,7 +22,7 @@
 
 <script>
 
-          var ttt_board = <%=ttt_board%>
+     var ttt_board = <%=ttt_board%>
      function showboard(ttt_board){
           for(i=0; i <= ttt_board.length; i++)
                if i == "x" || i == "o"
@@ -31,6 +31,7 @@
 
      }
 
+function ajax(){
 document.getElementById("showboard").addEventListener("submit", function(event){
 	// Stop default aciton of form (submission of form)
 	event.preventDefault();
@@ -48,6 +49,7 @@ document.getElementById("showboard").addEventListener("submit", function(event){
 	};
 	xhttp.open("POST", "loop", true);
 	xhttp.send(new FormData(showboard));
+}
 </script>
 
 </body>
