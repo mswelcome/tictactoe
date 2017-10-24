@@ -52,7 +52,7 @@ get '/game' do
     #op = session[:console].player2.marker
 
 
-    erb :game, locals: {ttt_board: session{:ttt_board},msg: msg,choice: choice}
+    erb :game, locals: {ttt_board: session{:ttt_board},msg: msg}
 end
 
 post '/loop' do
