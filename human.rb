@@ -8,7 +8,7 @@ class Human
           @marker = marker
      end
 
-     def getmove(ttt_board,marker,player1)
+     def getmove(ttt_board)
           move = gets.chomp.to_i
      end
 

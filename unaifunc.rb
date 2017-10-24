@@ -8,7 +8,7 @@ class Unai
           @marker = marker
      end
 
-     def win(ttt_board,marker)
+     def win(ttt_board)
           #p "WIN"
           state = [
                [ttt_board[0],ttt_board[1],ttt_board[2]],
@@ -24,7 +24,7 @@ class Unai
           choice = 10
           state.each_with_index do |arya, index|
                 #p "#{arya} QWERTY"
-                if arya.count(marker) == 2 && arya.count("") == 1
+                if arya.count('o') == 2 && arya.count("") == 1
                     win = arya.index("")
                     choice = winnums[index][win]
                end
@@ -175,12 +175,12 @@ class Unai
 
 
 
-     def getmove(ttt_board,marker,player1)
+     def getmove(ttt_board)
           choice = 10
-          if ttt_board.count(player1) <= 1
+          if ttt_board.count('x') <= 1
                choice = fmove(ttt_board)
-          elsif win(ttt_board,marker) <= 9
-              choice = win(ttt_board,marker)
+          elsif win(ttt_board) <= 9
+              choice = win(ttt_board)
           elsif block(ttt_board) <= 9
               choice = block(ttt_board)
           elsif get_edge_if_perfect(ttt_board) <=9

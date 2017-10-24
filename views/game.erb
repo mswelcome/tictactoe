@@ -3,54 +3,49 @@
 <body>
 
 
-<form id="showboard" method = "post" action = "/loop">
-
-     <input id="one" type="submit" name="choice" value="1" onclick="showboard(<%=ttt_board%>)"><%=ttt_board[0]%> ||
-     <input id="two" type="submit" name="choice" value="2"><%=ttt_board[1]%> ||
-     <input id="three" type="submit" name="choice" value="3"><%=ttt_board[2]%><br>
-     _________________<br>
-     <input id="four" type="submit" name="choice" value="4"><%=ttt_board[3]%> ||
-     <input id="five" type="submit" name="choice" value="5"><%=ttt_board[4]%> ||
-     <input id="six" type="submit" name="choice" value="6"><%=ttt_board[5]%><br>
-     _________________<br>
-     <input id="seven" type="submit" name="choice" value="7"><%=ttt_board[6]%> ||
-     <input id="eight" type="submit" name="choice" value="8"><%=ttt_board[7]%> ||
-     <input id="nine" type="submit" name="choice" value="9"><%=ttt_board[8]%><br>
-
+<form method = "post" action = "/loop">
+     <%if ttt_board[0] == ""%>
+          <input type="submit" name="choice" value="1"><%=ttt_board[0]%> I
+        <%else%>  <input type="submit" name="choice" value="<%=ttt_board[0]%>"> I
+        <%end%>
+        <%if ttt_board[1] == ""%>
+        <input type="submit" name="choice" value="2"><%=ttt_board[1]%> I
+        <%else%> <input type="submit" name="choice" value="<%=ttt_board[1]%>"> I
+        <%end%>
+        <%if ttt_board[2] == ""%>
+          <input type="submit" name="choice" value="3"><%=ttt_board[2]%> I
+        <%else%> <input type="submit" name="choice" value="<%=ttt_board[2]%>"> I
+        <%end%><br>
+        ============<br>
+        <%if ttt_board[3] == ""%>
+        <input type="submit" name="choice" value="4"><%=ttt_board[3]%> I
+        <%else%> <input type="submit" name="choice" value="<%=ttt_board[3]%>"> I
+        <%end%>
+        <%if ttt_board[4] == ""%>
+          <input type="submit" name="choice" value="5"><%=ttt_board[4]%> I
+        <%else%> <input type="submit" name="choice" value="<%=ttt_board[4]%>"> I
+        <%end%>
+        <%if ttt_board[5] == ""%>
+        <input type="submit" name="choice" value="6"><%=ttt_board[5]%> I
+        <%else%> <input type="submit" name="choice" value="<%=ttt_board[5]%>"> I
+        <%end%><br>
+        ============<br>
+        <%if ttt_board[6] == ""%>
+          <input type="submit" name="choice" value="7"><%=ttt_board[6]%> I
+        <%else%> <input type="submit" name="choice" value="<%=ttt_board[6]%>"> I
+        <%end%>
+        <%if ttt_board[7] == ""%>
+        <input type="submit" name="choice" value="8"><%=ttt_board[7]%> I
+        <%else%> <input type="submit" name="choice" value="<%=ttt_board[7]%>"> I
+        <%end%>
+        <%if ttt_board[8] == ""%>
+          <input type="submit" name="choice" value="9"><%=ttt_board[8]%> I
+        <%else%> <input type="submit" name="choice" value="<%=ttt_board[8]%>"> I
+        <%end%><br>
 </form>
 
 
-<script>
 
-     var ttt_board = <%=ttt_board%>
-     function showboard(ttt_board){
-          for(i=0; i <= ttt_board.length; i++)
-               if i == "x" || i == "o"
-                    var sb = document.getElementById('one').innerHTML = i;
-                    sb.value = i
-
-     }
-
-function ajax(){
-document.getElementById("showboard").addEventListener("submit", function(event){
-	// Stop default aciton of form (submission of form)
-	event.preventDefault();
-     var choice = <%=choice>
-     var cp = ''
-	var showboard = document.getElementById("showboard");
-	var formData = new FormData(showboard);
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-		  // 4 means the stuff is ready to return
-    	if (this.readyState == 4 && this.status == 200) {
-			// Select response area and display response there
-			document.getElementById("one").innerHTML = this.responseText;
-    	}
-	};
-	xhttp.open("POST", "loop", true);
-	xhttp.send(new FormData(showboard));
-}
-</script>
 
 </body>
 
