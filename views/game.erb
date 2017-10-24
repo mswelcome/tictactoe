@@ -4,9 +4,10 @@
 
 
 <form method = "post" action = "/loop">
-    <%if ttt_board[0] == ""%>
-        <input type="submit" name="choice" value="1"> ||
-    <%else%>  <input type="submit" name="choice" value="<%=ttt_board[0]%>"> ||
+<h3>
+    <%if ttt_board[0] == "x"%>
+        <input type="submit" name="choice" value="<%=ttt_board[0]%>"> ||
+    <%else%> <input type="submit" name="choice" value="1"> ||
     <%end%>
     <%if ttt_board[1] == ""%>
         <input type="submit" name="choice" value="2"><%=ttt_board[1]%> ||
@@ -39,9 +40,10 @@
     <%else%> <input type="submit" name="choice" value="<%=ttt_board[7]%>"> ||
     <%end%>
     <%if ttt_board[8] == ""%>
-        <input type="submit" name="choice" value="9"><%=ttt_board[8]%> ||
-    <%else%> <input type="submit" name="choice" value="<%=ttt_board[8]%>"> ||
+        <input type="submit" name="choice" value="9"><%=ttt_board[8]%>
+    <%else%> <input type="submit" name="choice" value="<%=ttt_board[8]%>">
     <%end%><br>
+</h3>
 </form>
 
 

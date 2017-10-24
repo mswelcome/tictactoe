@@ -50,7 +50,7 @@ get '/game' do
     session[:ttt_board] = session[:console].board.ttt_board
     #xp = session[:console].player1.marker
     #op = session[:console].player2.marker
-
+    p session[:ttt_board]
 
     erb :game, locals: {ttt_board: session{:ttt_board},msg: msg}
 end
