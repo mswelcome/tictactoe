@@ -2,45 +2,46 @@
 <%=msg%>
 <body>
 
-
+<%=session[:console].player1.name%> Player1
+<%=session[:console].player2.name%> Player2
 <form method = "post" action = "/loop">
 <h3>
-    <%if ttt_board[0] == "x"%>
-        <input type="submit" name="choice" value="<%=ttt_board[0]%>"> ||
-    <%else%> <input type="submit" name="choice" value="1"> ||
+    <%if ttt_board[0] == ""%>
+        <input type="submit" name="choice" value="1"> ||
+    <%else%> <input type="submit" name="choice" value="<%=ttt_board[0]%>"> ||
     <%end%>
     <%if ttt_board[1] == ""%>
-        <input type="submit" name="choice" value="2"><%=ttt_board[1]%> ||
+        <input type="submit" name="choice" value="2"> ||
     <%else%> <input type="submit" name="choice" value="<%=ttt_board[1]%>"> ||
     <%end%>
     <%if ttt_board[2] == ""%>
-        <input type="submit" name="choice" value="3"><%=ttt_board[2]%>
+        <input type="submit" name="choice" value="3">
     <%else%> <input type="submit" name="choice" value="<%=ttt_board[2]%>">
     <%end%><br>
     ============<br>
     <%if ttt_board[3] == ""%>
-        <input type="submit" name="choice" value="4"><%=ttt_board[3]%> ||
+        <input type="submit" name="choice" value="4"> ||
     <%else%> <input type="submit" name="choice" value="<%=ttt_board[3]%>"> ||
     <%end%>
     <%if ttt_board[4] == ""%>
-        <input type="submit" name="choice" value="5"><%=ttt_board[4]%> ||
+        <input type="submit" name="choice" value="5"> ||
     <%else%> <input type="submit" name="choice" value="<%=ttt_board[4]%>"> ||
     <%end%>
     <%if ttt_board[5] == ""%>
-        <input type="submit" name="choice" value="6"><%=ttt_board[5]%>
+        <input type="submit" name="choice" value="6">
     <%else%> <input type="submit" name="choice" value="<%=ttt_board[5]%>">
     <%end%><br>
     ============<br>
     <%if ttt_board[6] == ""%>
-        <input type="submit" name="choice" value="7"><%=ttt_board[6]%> ||
+        <input type="submit" name="choice" value="7"> ||
     <%else%> <input type="submit" name="choice" value="<%=ttt_board[6]%>"> ||
     <%end%>
     <%if ttt_board[7] == ""%>
-        <input type="submit" name="choice" value="8"><%=ttt_board[7]%> ||
+        <input type="submit" name="choice" value="8"> ||
     <%else%> <input type="submit" name="choice" value="<%=ttt_board[7]%>"> ||
     <%end%>
     <%if ttt_board[8] == ""%>
-        <input type="submit" name="choice" value="9"><%=ttt_board[8]%>
+        <input type="submit" name="choice" value="9">
     <%else%> <input type="submit" name="choice" value="<%=ttt_board[8]%>">
     <%end%><br>
 </h3>

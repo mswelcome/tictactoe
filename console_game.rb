@@ -15,14 +15,7 @@ until game == "done" do
      choice = ""
 
      choice = console.cp.getmove(console.board.ttt_board,console.cp.marker,console.player1.marker)
-
-     #p "#{choice} YOOOOOOOO"
-     #  if console.cp.marker == "x"
-     #    choice = console.player1.getmove
-     #  else
-     #    choice = console.player2.getmove(console.board.ttt_board,console.player1.marker,console.cp.marker)
-     #  end
-
+     
      if console.board.open_spot?(console.board.ttt_board,choice) == true
           console.board.tttup(console.ttt_board, choice, console.cp.marker)
           console.sbup(console.showboard,choice,console.cp.marker)

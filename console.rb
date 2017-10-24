@@ -1,12 +1,14 @@
 #Console Game Class
 
-class Console
+
 
 require_relative 'board.rb'
 require_relative 'seqmove.rb'
 require_relative 'human.rb'
 require_relative 'unaifunc.rb'
-require_relative 'console.rb'
+require_relative 'rand.rb'
+
+class Console
 
 
      attr_accessor :ttt_board, :player1, :board, :player2, :cp, :showboard
@@ -14,9 +16,9 @@ require_relative 'console.rb'
      def initialize
           @board = Board.new
           @showboard = ["1","2","3","4","5","6","7","8","9"]
-          @player1 = Human.new("x")
-          @player2 = Unai.new("o")
-          @cp = player1
+          @player1 #= Human.new("x", )
+          @player2 #= player2
+          @cp #= player1
       end
 
      def printboard()

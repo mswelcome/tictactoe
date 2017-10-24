@@ -18,24 +18,24 @@
 
 <h4> Pick the level of difficulty of your AI opponent </h4>
 
-<form method="post" action="/one_player">
-  <input type="radio" name="diff" value="Easy" checked>
-  <input type="radio" name="diff" value="TooEasy">
-  <input type="radio" name="diff" value="VictoryOrDeath">
-  <input type="submit">
-</form>
-
 <h3> Two Player game options </h3>
 <h4> Player1 is X </h4>
 <h4> Player2 is O </h4>
 
 
-<h3>Two Player Game</h3><br>
-   <form method="post" action="/two_player">
-     <input type="text" name="p1name" placeholder="Player one's name" required><br>
-     <input type="text" name="p2name" placeholder="Player two's name" required><br>
-     <input type="submit">
-   </form>
+<form method="post" action="/player_setup">
+  <input type="radio" name="diff" value="Easy" checked>
+  <input type="radio" name="diff" value="TooEasy">
+  <input type="radio" name="diff" value="VictoryOrDeath">
+  <input type="radio" name="diff" value="PlayHumans">
+  <input type="text" name="p1name" placeholder="Player one's name" required><br>
+  <input type="text" name="p2name" placeholder="Player two's name" required><br>
+  <input type="submit">
+</form>
+
+
+
+
 
 
 
