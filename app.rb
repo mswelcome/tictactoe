@@ -7,6 +7,7 @@ require_relative 'rand.rb'
 require_relative 'unaifunc.rb'
 require_relative 'human.rb'
 require_relative 'console.rb'
+require_relative 'functions.rb'
 enable 'sessions'
 
 
@@ -63,18 +64,15 @@ post '/loop' do
     end
 
     if session[:console].board.winner(session[:ttt_board]) || session[:console].board.fullboard?(session[:ttt_board])
-        redirect '/gameresults?msg=XXX WINS!!! or TIES!!!'
+        redirect '/gameresults'
     else
         if session[:console].player2.class == Human
             if session[:console].cp == session[:console].player1
-                #if session[:console].board.open_spot?(session[:ttt_board],choice) == true
-                #    session[:console].board.tttup(session[:ttt_board],choice,session[:console].player2.marker)
                 session[:console].select
                 redirect '/game'
             else session[:console].cp == session[:console].player2
                 session[:console].select
                 redirect '/game'
-                #else redirect '/game?msg=Invalid choice'
             end
         else
             choice = session[:console].player2.getmove(session[:ttt_board])
@@ -83,16 +81,31 @@ post '/loop' do
     end
 
     if session[:console].board.winner(session[:ttt_board]) || session[:console].board.fullboard?(session[:ttt_board])
-        redirect '/gameresults?msg=OOO WINS!!! or TIES!!!'
-    else redirect '/game'
+        redirect '/gameresults'
+    else
+        redirect '/game'
     end
 
 end
 
 get '/gameresults' do
     msg = params[:msg] || ""
+    winner = ""
+
+    if session[:console].board.winner(session[:ttt_board])
+        winner = session[:console].cp.name
+    else
+        winner = "Tied Game"
+    end
 
 
+    insertgame(session[:console].player1.name,
+               session[:console].player2.name,
+               winner,
+               Time.new.inspect
+    )
+
+    session[:table] = generate_table()
 
     erb :gameresults, locals: {ttt_board: session[:ttt_board],msg: msg}
 
