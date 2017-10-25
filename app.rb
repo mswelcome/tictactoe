@@ -21,7 +21,7 @@ end
 
 post '/player_setup' do
 
-    #Variables to set Player1 and Player2 as Humans or Ai's
+    #Variables to set Player1 and Player2 as Humans or Ai's8888
     diff = params[:diff]
     diff2 = params[:diff2]
 
@@ -60,7 +60,7 @@ get '/game' do
     session[:ttt_board] = session[:console].board.ttt_board
 
 
-    if session[:console].player1.class == Seqmove || session[:console].player1.class == Random || session[:console].player1.class == Unai
+    if session[:console].player1.class == Seqmove || session[:console].player1.class == Random || session[:console].player1.class == Unai && session[:console].player2 != Human
         aizen = ""
         until aizen == "dead"
             choice = session[:console].cp.getmove(session[:ttt_board])
@@ -91,10 +91,10 @@ end
 post '/loop' do
     choice = params[:choice]
 
-
     if session[:console].board.open_spot?(session[:ttt_board],choice) == true
             session[:console].board.tttup(session[:ttt_board],choice,session[:console].cp.marker)
-    else redirect '/game?msg=Invalid choice'
+    else
+        redirect '/game?msg=Invalid choice'
     end
 
     if session[:console].board.winner(session[:ttt_board]) || session[:console].board.fullboard?(session[:ttt_board])
