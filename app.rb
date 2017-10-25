@@ -21,24 +21,34 @@ end
 
 post '/player_setup' do
 
+    #Variables to set Player1 and Player2 as Humans or Ai's
     diff = params[:diff]
+    diff2 = params[:diff2]
 
     #
-    session[:console].player1 = Human.new('x',params[:p1name])
-    session[:console].cp = session[:console].player1
-    p "#{session[:console].cp.marker} In player setup!!!"
 
-    #
     if diff == "Easy"
-        session[:console].player2 = Seqmove.new("o", params[:p2name])
+        session[:console].player1 = Seqmove.new("x", params[:p1name])
     elsif diff == "TooEasy"
-        session[:console].player2 = Random.new('o', params[:p2name])
+        session[:console].player1 = Random.new("x", params[:p1name])
     elsif diff == "VictoryOrDeath"
+        session[:console].player1 = Unai.new("x", params[:p1name])
+    else
+        session[:console].player1 = Human.new('x',params[:p1name])
+    end
+
+    #
+    if diff2 == "Easy"
+        session[:console].player2 = Seqmove.new("o", params[:p2name])
+    elsif diff2 == "TooEasy"
+        session[:console].player2 = Random.new("o", params[:p2name])
+    elsif diff2 == "VictoryOrDeath"
         session[:console].player2 = Unai.new("o", params[:p2name])
     else
         session[:console].player2 = Human.new("o", params[:p2name])
     end
 
+    session[:console].cp = session[:console].player1
     #
     redirect '/game'
 
@@ -49,14 +59,41 @@ get '/game' do
     msg = params[:msg] || ""
     session[:ttt_board] = session[:console].board.ttt_board
 
+
+    if session[:console].player1.class == Seqmove || session[:console].player1.class == Random || session[:console].player1.class == Unai
+        aizen = ""
+        until aizen == "dead"
+            choice = session[:console].cp.getmove(session[:ttt_board])
+            session[:console].board.tttup(session[:ttt_board],choice,session[:console].cp.marker)
+            if session[:console].cp == session[:console].player1
+                session[:console].select
+                #redirect '/game'
+            else session[:console].cp == session[:console].player2
+                session[:console].select
+                #redirect '/game'
+            end
+
+            if session[:console].board.winner(session[:ttt_board]) || session[:console].board.fullboard?(session[:ttt_board])
+                aizen = "dead"
+                redirect '/gameresults'
+            else
+                aizen = ""
+            end
+        end
+
+    end
+
+
+
     erb :game, locals: {ttt_board: session[:ttt_board],msg: msg}
 end
 
 post '/loop' do
     choice = params[:choice]
 
+
     if session[:console].board.open_spot?(session[:ttt_board],choice) == true
-        session[:console].board.tttup(session[:ttt_board],choice,session[:console].cp.marker)
+            session[:console].board.tttup(session[:ttt_board],choice,session[:console].cp.marker)
     else redirect '/game?msg=Invalid choice'
     end
 
