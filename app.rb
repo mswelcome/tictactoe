@@ -25,21 +25,21 @@ post '/player_setup' do
 
     #
     session[:console].player1 = Human.new('x',params[:p1name])
+    session[:console].cp = session[:console].player1
+    p "#{session[:console].cp.marker} In player setup!!!"
 
     #
     if diff == "Easy"
         session[:console].player2 = Seqmove.new("o", params[:p2name])
     elsif diff == "TooEasy"
         session[:console].player2 = Random.new('o', params[:p2name])
-        p "#{session[:console].player2.marker}"
     elsif diff == "VictoryOrDeath"
         session[:console].player2 = Unai.new("o", params[:p2name])
     else
         session[:console].player2 = Human.new("o", params[:p2name])
     end
 
-    session[:console].cp = session[:console].player1
-
+    #
     redirect '/game'
 
 end
@@ -48,9 +48,6 @@ get '/game' do
 
     msg = params[:msg] || ""
     session[:ttt_board] = session[:console].board.ttt_board
-    #xp = session[:console].player1.marker
-    #op = session[:console].player2.marker
-    p session[:ttt_board]
 
     erb :game, locals: {ttt_board: session[:ttt_board],msg: msg}
 end

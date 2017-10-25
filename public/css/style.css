@@ -27,6 +27,7 @@
 }
 
 body {
+	height: 90%;
 	font-size: 100%;
 	position: center;
 }
